@@ -19,7 +19,7 @@ class UsersController < ApplicationController
           first_name: @user.first_name,
           last_name: @user.last_name
         })
-        render json: {user: @user, token: token}
+        render json: {user: @user, jwt: token}
       else
         render json: {error: "Invalid email or password"}
       end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
           first_name: @user.first_name,
           last_name: @user.last_name
         })
-        render json: {user: @user, token: token}
+        render json: {jwt: token}
       else
         render json: {error: "Invalid email or password"}
       end

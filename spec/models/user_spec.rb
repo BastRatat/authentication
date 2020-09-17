@@ -48,3 +48,12 @@ RSpec.describe User, type: :request do
     end
   end
 end
+
+RSpec.describe User do
+    context 'ASSOCIATION TESTS' do
+        it "should have many requests" do
+            request = User.reflect_on_association(:requests)
+            expect(request.macro).to eq(:has_many)
+        end
+    end
+end
