@@ -1,6 +1,4 @@
 require 'rails_helper'
-require_relative '../authentication_helper'
-require 'jwt'
 
 RSpec.describe Request do
     context "ASSOCIATION TESTS" do
@@ -10,7 +8,6 @@ RSpec.describe Request do
         end
     end
 end
-
 
 RSpec.describe Request, type: :model do
   context 'VALIDATIONS TESTS' do
@@ -35,48 +32,3 @@ RSpec.describe Request, type: :model do
     end
   end
 end
-
-RSpec.describe Request, type: :request do
-
-  include AuthorizationHelper
-
-  setup do
-    test_user = {
-      email: "test@test.com",
-      password: "123456",
-      first_name: "First",
-      last_name: "Last"
-    }
-    sign_up(test_user)
-    @auth_token = auth_token(test_user)
-    @user = retrieve_id(@auth_token)
-  end
-
-  context 'REQUESTS TESTS' do
-    it "saves a request" do
-        post '/requests',
-        :params => {
-            :user_id => "#{@user}",
-            :title => 'Test title',
-            :request_type => 'one-time task',
-            :description => 'test',
-            :location => 'Marseille',
-            :status => false
-        },
-        :headers => {
-            "authorization" => "bearer #{@auth_token}"
-        }
-        retrieve_id(@auth_token)
-        expect(response).to have_http_status(:created)
-    end
-
-    it "ensures a user can retrieve all requests" do
-        get '/requests',
-        :headers => {
-            "authorization" => "bearer #{@auth_token}"
-        }
-        expect(response).to have_http_status(:ok)
-    end
-  end
-end
-
