@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Volunteer, type: :model do
-  context "VALIDATIONS TESTS" do
+  context "VALIDATIONS TESTS FOR VOLUNTEER" do
       it "ensures user_id presence" do
           volunteer = Volunteer.new(request_id: 1).save
           expect(volunteer).to eq(false)

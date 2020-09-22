@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Request do
-    context "ASSOCIATION TESTS" do
+    context "ASSOCIATION TESTS FOR REQUESTS" do
         it "should belong to a user" do
             user = Request.reflect_on_association(:user)
             expect(user.macro).to eq(:belongs_to)
@@ -10,7 +10,7 @@ RSpec.describe Request do
 end
 
 RSpec.describe Request, type: :model do
-  context 'VALIDATIONS TESTS' do
+  context 'VALIDATIONS TESTS FOR REQUESTS' do
     it 'ensures title presence' do
         request = Request.new(user_id: 1, request_type: 'one-time task', description: 'request content', location: 'London', status: false).save
         expect(request).to eq(false)
