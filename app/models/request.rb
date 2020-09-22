@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
     belongs_to :user
+    has_many :requests
 
     validates :title, presence: true
     validates :request_type, presence: true
