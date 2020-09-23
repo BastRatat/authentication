@@ -1,13 +1,9 @@
 require 'rails_helper'
-require_relative '../authentication_helper'
-require_relative '../requests_helper'
-require_relative '../volunteer_helper'
+require_relative '../helpers/tests_helper'
 
 RSpec.describe "/chats", type: :request do
 
-  include AuthorizationHelper
-  include RequestsHelper
-  include VolunteersHelper
+  include TestsHelper
 
   setup do
     # Mock a user
@@ -38,7 +34,7 @@ RSpec.describe "/chats", type: :request do
       description: "testing a request for the sake of testing our chat table",
       location: "Marseille"
     }
-    @request_one = create_user(test_request, @auth_token_one)
+    @request_one = create_request(test_request, @auth_token_one)
 
     # Sign up a user that would be a volunteer
     sign_up(test_user_two)
@@ -50,6 +46,7 @@ RSpec.describe "/chats", type: :request do
       user_id: @user_two,
       request_id: @request_one
     }
+    # "VOLUNTEER MUST EXIST"
     @volunteer = create_volunteer(@request_one, test_volunteer, @auth_token_two)
   end
 

@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  resources :messages
+
   # NESTED ROUTES FOR REQUESTS
   resources :requests do
-      resources :volunteers, only: [:create, :index]
-      resources :chats, only: [:create, :index]
+    resources :volunteers, only: [:create, :index]
+    resources :chats, only: [:create, :index]
   end
+
+  # ROUTES FOR MESSAGES
+  get '/chat/:chat_id/messages', to: "messages#index"
+  post '/chat/:chat_id/messages', to: "messages#create"
 
   # ROUTES FOR CHATS
   get '/chat/:id', to: "chats#show"

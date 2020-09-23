@@ -1,10 +1,9 @@
 require 'rails_helper'
-require_relative '../authentication_helper'
-require_relative '../requests_helper'
+require_relative '../helpers/tests_helper'
 
 RSpec.describe "/volunteers", type: :request do
-  include AuthorizationHelper
-  include RequestsHelper
+
+  include TestsHelper
 
   setup do
     # Mock a user
@@ -26,7 +25,7 @@ RSpec.describe "/volunteers", type: :request do
       description: "testing a request for the sake of testing our volunteer table",
       location: "Marseille"
     }
-    @request = create_user(test_request, @auth_token)
+    @request = create_request(test_request, @auth_token)
   end
 
   let(:valid_attributes) {

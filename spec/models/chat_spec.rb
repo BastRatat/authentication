@@ -19,7 +19,7 @@ RSpec.describe Chat, type: :model do
   end
 end
 
-RSpec.describe User do
+RSpec.describe Chat do
     context 'ASSOCIATION TESTS FOR CHATS' do
         it "should belong to User" do
             user = Chat.reflect_on_association(:user)

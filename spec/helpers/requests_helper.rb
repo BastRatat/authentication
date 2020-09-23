@@ -1,5 +1,5 @@
 module RequestsHelper
-    def create_user(request_data, token)
+    def create_request(request_data, token)
         # Take test request data and test user JWT to create a request
         # Return the request ID
         post '/requests',

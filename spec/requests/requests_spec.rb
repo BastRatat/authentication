@@ -1,8 +1,9 @@
 require 'rails_helper'
-require_relative '../authentication_helper'
+require_relative '../helpers/tests_helper'
 
 RSpec.describe "/requests", type: :request do
-  include AuthorizationHelper
+
+  include TestsHelper
 
   setup do
     test_user = {
