@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   get '/auto_login', to: 'users#auto_login'
   get '/users', to: 'users#index'
+  get '/user/:id', to: 'users#show'
 end
