@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     resources :chats, only: [:create, :index]
   end
 
+  # ROUTE FOR UPLOAD A FILE
+  get '/files', to: "papers#index"
+  get '/file/:id', to: "papers#show"
+  post '/user/:user_id/file', to: "papers#create"
+  delete '/file/:id', to: "papers#destroy"
+
   # ROUTES FOR MESSAGES
   get '/chat/:chat_id/messages', to: "messages#index"
   post '/chat/:chat_id/messages', to: "messages#create"
