@@ -1,6 +1,6 @@
 class VolunteersController < ApplicationController
   before_action :set_volunteer, only: [:show, :update, :destroy]
-  before_action :set_id, only: [:index, :create]
+  before_action :set_id, only: [:index]
 
   # GET /volunteers
   def index
@@ -17,18 +17,10 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   def create
     @volunteer = Volunteer.new(volunteer_params)
-    volunteers = Volunteer.all.where(request_id: @request_id)
-    if volunteers.length() >= 5
-      render json: {
-        status: :forbidden,
-        'error': 'This request cannot have more volunteers'
-      }
+    if @volunteer.save
+      render json: @volunteer, status: :created
     else
-      if @volunteer.save
-        render json: @volunteer, status: :created
-      else
-        render json: @volunteer.errors, status: :unprocessable_entity
-      end
+      render json: @volunteer.errors, status: :unprocessable_entity
     end
   end
 

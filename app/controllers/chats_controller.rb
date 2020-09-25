@@ -1,6 +1,6 @@
 class ChatsController < ApplicationController
   before_action :set_chat, only: [:show, :update, :destroy]
-  before_action :set_id, only: [:index, :create]
+  before_action :set_id, only: [:index]
 
   # GET /chats
   def index
@@ -16,18 +16,10 @@ class ChatsController < ApplicationController
   # POST /chats
   def create
     @chat = Chat.new(chat_params)
-    chats = Chat.all.where(request_id: @request_id)
-    if chats.length() >= 5
-      render json: {
-        status: :forbidden,
-        'error': 'This request cannot have more chatrooms'
-      }
+    if @chat.save
+      render json: @chat, status: :created
     else
-      if @chat.save
-        render json: @chat, status: :created
-      else
-        render json: @chat.errors, status: :unprocessable_entity
-      end
+      render json: @chat.errors, status: :unprocessable_entity
     end
   end
 
