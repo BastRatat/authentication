@@ -13,13 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     begin
       if @user.save!
-        token = encode_token({
-          user_id: @user.id,
-          email: @user.email,
-          first_name: @user.first_name,
-          last_name: @user.last_name
-        })
-        render json: {user: @user, jwt: token}
+        render json: {user: @user}
       else
         render json: {error: "Invalid email or password"}
       end
