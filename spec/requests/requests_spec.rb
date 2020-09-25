@@ -23,8 +23,7 @@ RSpec.describe "/requests", type: :request do
       :title => 'Test title',
       :request_type => 'one-time task',
       :description => 'test',
-      :location => 'Marseille',
-      :status => false
+      :location => 'Marseille'
     }
   }
 
