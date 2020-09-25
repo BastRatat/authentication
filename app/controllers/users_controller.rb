@@ -51,6 +51,11 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  def destroy
+    @user.destroy
+    render json: {'success': 'User was removed.'}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

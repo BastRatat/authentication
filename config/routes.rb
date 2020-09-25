@@ -34,4 +34,5 @@ Rails.application.routes.draw do
   get '/auto_login', to: 'users#auto_login'
   get '/users', to: 'users#index'
   get '/user/:id', to: 'users#show'
+  delete '/user/:id', to: "users#destroy"
 end
