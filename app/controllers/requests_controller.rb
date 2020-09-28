@@ -1,5 +1,11 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy]
+  before_action :authorized, except: [:total]
+
+  def total
+    @total = Request.all.where(status: "unfulfilled")
+    render json: @total.length()
+  end
 
   # GET /requests
   def index

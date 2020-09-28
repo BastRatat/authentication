@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :chats, only: [:create, :index]
   end
 
+  # ROUTE TO GET REQUEST TOTAL
+  get '/total', to: "requests#total"
+
   # ROUTE FOR UPLOAD A FILE
   get '/files', to: "papers#index"
   get '/file/:id', to: "papers#show"
