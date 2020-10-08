@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   put '/chat/:id', to: "chats#update"
   delete '/chat/:id', to: "chats#destroy"
 
+  # CREATE A NEW ROUTE FOR GET ALL
   # ROUTES FOR VOLUNTEERS
+  get '/volunteers', to: "volunteers#total"
   get '/volunteer/:id', to: "volunteers#show"
   patch '/volunteer/:id', to: "volunteers#update"
   put '/volunteer/:id', to: "volunteers#update"

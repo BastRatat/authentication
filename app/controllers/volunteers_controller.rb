@@ -3,6 +3,11 @@ class VolunteersController < ApplicationController
   before_action :set_id, only: [:index]
 
   # GET /volunteers
+  def total
+    all_volunteers = Volunteer.all
+    render json: all_volunteers
+  end
+
   def index
     # INDEX ACTION HAS TO RETRIEVE ALL THE VOLUNTEERS FOR A SPECIFIC REQUEST
     @volunteers = Volunteer.all.where(request_id: @request_id)
