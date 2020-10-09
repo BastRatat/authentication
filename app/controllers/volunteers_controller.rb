@@ -2,6 +2,13 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer, only: [:show, :update, :destroy]
   before_action :set_id, only: [:index]
 
+  # DELETE /volunteers
+  def remove_all
+    all_volunteers = Volunteer.all
+    all_volunteers.destroy_all
+    render json: {success: "All volunteers have been removed."}
+  end
+
   # GET /volunteers
   def total
     all_volunteers = Volunteer.all

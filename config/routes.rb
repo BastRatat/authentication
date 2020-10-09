@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   patch '/volunteer/:id', to: "volunteers#update"
   put '/volunteer/:id', to: "volunteers#update"
   delete '/volunteer/:id', to: "volunteers#destroy"
+  delete '/volunteers', to: "volunteers#remove_all"
 
   # ROUTES FOR AUTHENTICATION
   resources :users, only: [:create]
