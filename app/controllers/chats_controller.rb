@@ -3,6 +3,11 @@ class ChatsController < ApplicationController
   before_action :set_id, only: [:index]
 
   # GET /chats
+  def total
+    all_chats = Chat.all
+    render json: all_chats
+  end
+
   def index
     @chats = Chat.all.where(request_id: @request_id)
     render json: @chats

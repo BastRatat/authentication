@@ -20,12 +20,12 @@ Rails.application.routes.draw do
   post '/chat/:chat_id/messages', to: "messages#create"
 
   # ROUTES FOR CHATS
+  get '/chats', to: "chats#total"
   get '/chat/:id', to: "chats#show"
   patch '/chat/:id', to: "chats#update"
   put '/chat/:id', to: "chats#update"
   delete '/chat/:id', to: "chats#destroy"
 
-  # CREATE A NEW ROUTE FOR GET ALL
   # ROUTES FOR VOLUNTEERS
   get '/volunteers', to: "volunteers#total"
   get '/volunteer/:id', to: "volunteers#show"
