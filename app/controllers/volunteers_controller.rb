@@ -6,7 +6,7 @@ class VolunteersController < ApplicationController
   def remove_all
     all_volunteers = Volunteer.all
     all_volunteers.destroy_all
-    render json: {success: "All volunteers have been removed."}
+    render json: {success: "All volunteers have been removed from the Volunteer table."}
   end
 
   # GET /volunteers

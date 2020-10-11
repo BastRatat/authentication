@@ -2,6 +2,12 @@ class ChatsController < ApplicationController
   before_action :set_chat, only: [:show, :update, :destroy]
   before_action :set_id, only: [:index]
 
+  def remove_all
+    all_chats = Chat.all
+    all_chats.destroy_all
+    render json: {success: "All chats have been removed from the Chat table."}
+  end
+
   # GET /chats
   def total
     all_chats = Chat.all

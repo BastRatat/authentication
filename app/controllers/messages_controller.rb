@@ -3,6 +3,18 @@ class MessagesController < ApplicationController
   before_action :set_id, only: [:index]
 
   # GET /messages
+  def total
+    all_messages = Message.all
+    render json: all_messages
+  end
+
+  # DELETE /messages
+  def remove_all
+    all_messages = Message.all
+    all_messages._destroy_all
+    render json: {success: "All messages have been removed from the Message table."}
+  end
+
   def index
     @messages = Message.all.where(chat_id: @chat_id)
     render json: @messages

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   # ROUTES FOR MESSAGES
   get '/chat/:chat_id/messages', to: "messages#index"
   post '/chat/:chat_id/messages', to: "messages#create"
+  get '/messages', to: "messages#total"
+  delete '/messages', to: "messages#remove_all"
 
   # ROUTES FOR CHATS
   get '/chats', to: "chats#total"
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
   patch '/chat/:id', to: "chats#update"
   put '/chat/:id', to: "chats#update"
   delete '/chat/:id', to: "chats#destroy"
+  delete '/chats', to: "chats#remove_all"
 
   # ROUTES FOR VOLUNTEERS
   get '/volunteers', to: "volunteers#total"
