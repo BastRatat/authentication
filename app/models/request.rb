@@ -10,5 +10,6 @@ class Request < ApplicationRecord
     validates :location, presence: true
 
     validates :request_type, inclusion: { in: ["one-time task", "material need"] }
-    validates :status, inclusion: { in: ["unfulfilled", "fulfilled"] }
+    validates :status, inclusion: { in: ["unfulfilled", "fulfilled", "pending"] }
+    validates :description, length: { maximum: 300 }
 end

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   # ROUTE TO GET REQUEST TOTAL
   get '/total', to: "requests#total"
+  delete '/requests', to: "requests#remove_all"
+
 
   # ROUTE FOR UPLOAD A FILE
   get '/files', to: "papers#index"

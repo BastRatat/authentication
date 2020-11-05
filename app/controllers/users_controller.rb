@@ -54,7 +54,7 @@ class UsersController < ApplicationController
         })
         render json: {user: @user, jwt: token}
       else
-        render json: {error: "Invalid email or password"}
+        render json: @user.errors, status: :not_acceptable
       end
     rescue PG::UniqueViolation
       render json: {error: "An issue has occured"}

@@ -13,14 +13,5 @@ RSpec.describe User, type: :request do
         }
         expect(response).to have_http_status(:ok)
     end
-
-    it 'should login a user by returning a JWT' do
-        post '/login',
-        :params => {
-            :email => 'test@test.com',
-            :password => '123456',
-        }
-        expect(response).to have_http_status(:ok)
-    end
   end
 end

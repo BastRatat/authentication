@@ -1,6 +1,13 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy]
-  before_action :authorized, except: [:total]
+  before_action :authorized, except: [:total, :update]
+
+  # DELETE /volunteers
+  def remove_all
+    all_requests = Request.all
+    all_requests.destroy_all
+    render json: {success: "All requests have been removed from the Request table."}
+  end
 
   def total
     @total = Request.all.where(status: "unfulfilled")

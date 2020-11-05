@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   # DELETE /messages
   def remove_all
     all_messages = Message.all
-    all_messages._destroy_all
+    all_messages.destroy_all
     render json: {success: "All messages have been removed from the Message table."}
   end
 
